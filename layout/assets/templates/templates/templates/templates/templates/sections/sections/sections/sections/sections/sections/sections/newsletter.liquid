@@ -1,0 +1,30 @@
+<div class="na-section bg-mid na-newsletter">
+  <div class="na-newsletter-inner">
+    <div class="na-label">{{ section.settings.label | default: 'Codes promo exclusifs' }}</div>
+    <h2 class="na-title">{{ section.settings.title | default: 'Recevez les meilleures offres' }}</h2>
+    <p class="na-sub" style="margin:0 auto 0">{{ section.settings.sub | default: 'Inscrivez-vous et recevez directement dans votre boîte de réception les codes promo, les nouveautés et les ventes flash pour votre prochaine aventure.' }}</p>
+
+    {% form 'customer', class: 'na-nl-form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input class="na-nl-input" type="email" name="contact[email]" placeholder="{{ section.settings.placeholder | default: 'votre@courriel.com' }}" required>
+      <button type="submit" class="btn-gold">{{ section.settings.btn | default: "S'inscrire" }}</button>
+    {% endform %}
+
+    <p class="na-nl-note">{{ section.settings.note | default: 'Sans spam. Désinscription possible à tout moment. Votre courriel reste confidentiel.' }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Infolettre",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label doré", "default": "Codes promo exclusifs" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Recevez les meilleures offres" },
+    { "type": "textarea", "id": "sub", "label": "Sous-titre" },
+    { "type": "text", "id": "placeholder", "label": "Placeholder email", "default": "votre@courriel.com" },
+    { "type": "text", "id": "btn", "label": "Texte bouton", "default": "S'inscrire" },
+    { "type": "text", "id": "note", "label": "Note de bas", "default": "Sans spam. Désinscription possible à tout moment." }
+  ],
+  "presets": [{ "name": "Infolettre" }]
+}
+{% endschema %}
