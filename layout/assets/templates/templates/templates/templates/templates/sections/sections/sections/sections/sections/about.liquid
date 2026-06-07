@@ -1,0 +1,37 @@
+<div class="na-section bg-mid">
+  <h2 class="na-about-title">{{ section.settings.title | default: "L'équipement qui fait la différence entre une nuit dehors et une vraie aventure." }}</h2>
+  {% for block in section.blocks %}
+    <div class="na-about-item" {{ block.shopify_attributes }}>
+      <div class="na-about-item-title">{{ block.settings.title }}</div>
+      <div class="na-about-item-text">{{ block.settings.text }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Notre raison d'être",
+  "settings": [
+    { "type": "textarea", "id": "title", "label": "Titre principal", "default": "L'équipement qui fait la différence entre une nuit dehors et une vraie aventure." }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Argument",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Tout au même endroit" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Tente, réchaud, sac de couchage, lampe frontale — l'équipement complet pour partir sans rien oublier." }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Notre raison d'être",
+    "blocks": [
+      { "type": "item", "settings": { "title": "Tout au même endroit", "text": "Tente, réchaud, sac de couchage, lampe frontale — l'équipement complet pour partir sans rien oublier." } },
+      { "type": "item", "settings": { "title": "Qualité éprouvée", "text": "Des produits testés en conditions réelles, choisis pour leur durabilité face au vent, à la pluie et au froid." } },
+      { "type": "item", "settings": { "title": "Expéditions inoubliables", "text": "Que ce soit pour une nuit en forêt ou une traversée de plusieurs jours, votre matériel ne vous trahira pas." } },
+      { "type": "item", "settings": { "title": "Livraison en 7 à 12 jours", "text": "Commandez aujourd'hui et recevez votre équipement en 7 à 12 jours ouvrables, suivi de colis inclus." } }
+    ]
+  }]
+}
+{% endschema %}
