@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --gold: #F5A623;
+  --gold-dark: #D4891A;
+  --bg-dark: #1a2a14;
+  --bg-mid: #2a3d20;
+  --bg-card: #344d28;
+  --text-white: #ffffff;
+  --text-off: #e8e0d0;
+  --text-muted: #a8c880;
+  --border-gold: rgba(245,166,35,0.55);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+.na-nav {
+  background: rgba(20,35,15,0.97);
+  padding: 14px 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.na-logo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-white);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.na-nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.na-nav-links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.na-nav-links a:hover { color: var(--gold); }
+.na-cart-icon {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.na-cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: var(--gold);
+  color: #1a1a0a;
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.na-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.na-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.na-hero-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.na-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(8,14,6,0.05) 0%, rgba(8,14,6,0.35) 45%, rgba(8,14,6,0.9) 100%);
+  z-index: 1;
+}
+.na-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 3rem 5rem;
+  max-width: 700px;
+}
+.na-hero-sup {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.na-hero-badge {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.55);
+  color: var(--text-white);
+  font-size: 0.75rem;
