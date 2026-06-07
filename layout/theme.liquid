@@ -13,4 +13,34 @@
 <body>
 
   <nav class="na-nav">
-    <a href=
+    <a href="{{ routes.root_url }}" class="na-logo">{{ shop.name }}</a>
+    <div class="na-nav-links">
+      <a href="{{ routes.collections_url }}">Équipement</a>
+      <a href="{{ routes.root_url }}pages/promos">Promos</a>
+      <a href="{{ routes.root_url }}pages/contact">Contact</a>
+    </div>
+    <a href="{{ routes.cart_url }}" class="na-cart-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      {% if cart.item_count > 0 %}
+        <span class="na-cart-count">{{ cart.item_count }}</span>
+      {% endif %}
+    </a>
+  </nav>
+
+  <main>
+    {{ content_for_layout }}
+  </main>
+
+  <footer class="na-footer">
+    <div class="na-flogo">{{ shop.name }}</div>
+    <div class="na-fcopy">© {{ 'now' | date: '%Y' }} · Camping sauvage, équipement durable.</div>
+    <div class="na-flinks">
+      <a href="{{ routes.root_url }}policies/privacy-policy">Confidentialité</a>
+      <a href="{{ routes.root_url }}policies/terms-of-service">Conditions</a>
+      <a href="{{ routes.root_url }}pages/contact">Contact</a>
+    </div>
+  </footer>
+
+  {{ 'nordalpha.js' | asset_url | script_tag }}
+</body>
+</html>
