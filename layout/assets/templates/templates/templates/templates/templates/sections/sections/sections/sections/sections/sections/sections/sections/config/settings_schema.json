@@ -1,0 +1,33 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Nordalpha",
+    "theme_version": "1.0.0",
+    "theme_author": "Nordalpha",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Couleurs",
+    "settings": [
+      { "type": "color", "id": "color_gold", "label": "Couleur dorée (boutons & accents)", "default": "#F5A623" },
+      { "type": "color", "id": "color_bg_dark", "label": "Fond principal", "default": "#1a2a14" },
+      { "type": "color", "id": "color_bg_mid", "label": "Fond sections alternées", "default": "#2a3d20" }
+    ]
+  },
+  {
+    "name": "Typographie",
+    "settings": [
+      { "type": "font_picker", "id": "font_heading", "label": "Police titres", "default": "playfair_display_n7" },
+      { "type": "font_picker", "id": "font_body", "label": "Police corps", "default": "inter_n4" }
+    ]
+  },
+  {
+    "name": "Réseaux sociaux",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" }
+    ]
+  }
+]
