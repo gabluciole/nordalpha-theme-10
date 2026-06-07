@@ -1,0 +1,51 @@
+<div class="na-section bg-mid">
+  <div class="na-label">{{ section.settings.label | default: 'Pour les vrais campeurs' }}</div>
+  <h2 class="na-title">{{ section.settings.title | default: 'Le kit complet pour partir ce week-end' }}</h2>
+  <p class="na-sub">{{ section.settings.sub | default: 'Tente, sac de couchage, réchaud et accessoires de survie — tout ce qu\'il faut pour une expédition réussie.' }}</p>
+  <a href="{{ section.settings.btn_url | default: routes.collections_url }}" class="btn-gold">
+    {{ section.settings.btn_text | default: 'Composer mon équipement' }}
+  </a>
+  <div style="font-size:0.78rem;color:#a8c880;margin-top:0.6rem">
+    {{ section.settings.btn_note | default: 'Sans engagement · Suivi de colis inclus' }}
+  </div>
+  <div class="na-kit-list">
+    {% for block in section.blocks %}
+      <div class="na-kit-item" {{ block.shopify_attributes }}>
+        <span class="na-diamond">✦</span>
+        {{ block.settings.item }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kit complet",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label doré", "default": "Pour les vrais campeurs" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Le kit complet pour partir ce week-end" },
+    { "type": "textarea", "id": "sub", "label": "Sous-titre" },
+    { "type": "text", "id": "btn_text", "label": "Texte bouton", "default": "Composer mon équipement" },
+    { "type": "url", "id": "btn_url", "label": "Lien bouton" },
+    { "type": "text", "id": "btn_note", "label": "Note sous le bouton", "default": "Sans engagement · Suivi de colis inclus" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Élément de liste",
+      "settings": [
+        { "type": "text", "id": "item", "label": "Texte", "default": "Tentes & abris résistants" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Kit complet",
+    "blocks": [
+      { "type": "item", "settings": { "item": "Tentes & abris résistants" } },
+      { "type": "item", "settings": { "item": "Réchauds & fourneaux portatifs" } },
+      { "type": "item", "settings": { "item": "Trousses de survie complètes" } },
+      { "type": "item", "settings": { "item": "Chasse-moustiques & sécurité" } }
+    ]
+  }]
+}
+{% endschema %}
