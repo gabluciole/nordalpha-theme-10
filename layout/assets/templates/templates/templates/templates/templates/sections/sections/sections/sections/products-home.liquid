@@ -1,0 +1,48 @@
+<div class="na-section bg-dark" id="equipement">
+  <div class="na-label">{{ section.settings.label | default: 'La sélection' }}</div>
+  <h2 class="na-title">{{ section.settings.title | default: "Équipement de l'expédition" }}</h2>
+  <p class="na-sub">{{ section.settings.sub | default: 'Chaque article est jugé sur trois critères : la fiabilité en pleine nature, le poids dans le sac et la durée de vie.' }}</p>
+
+  {% if section.settings.collection != blank %}
+    {% assign current_collection = collections[section.settings.collection] %}
+
+    <div class="na-filter-bar">
+      <button class="na-filter-btn active" data-filter="all">Tout</button>
+      {% for tag in current_collection.all_tags %}
+        <button class="na-filter-btn" data-filter="{{ tag | handleize }}">{{ tag }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="na-products-grid">
+      {% for product in current_collection.products limit: section.settings.products_limit %}
+        <a href="{{ product.url }}" class="na-product-card" data-type="{{ product.type | handleize }}">
+          {% if product.featured_image %}
+            <img class="na-product-img" src="{{ product.featured_image | img_url: '500x500', crop: 'center' }}" alt="{{ product.title | escape }}" loading="lazy">
+          {% else %}
+            <div class="na-product-img" style="display:flex;align-items:center;justify-content:center;font-size:3rem">🏕️</div>
+          {% endif %}
+          <div class="na-product-info">
+            <div class="na-product-name">{{ product.title }}</div>
+            <div class="na-product-price">{{ product.price | money }}</div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="color:rgba(255,255,255,0.4);font-size:0.9rem">Sélectionnez une collection dans les paramètres de la section.</p>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Produits accueil",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label doré", "default": "La sélection" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Équipement de l'expédition" },
+    { "type": "textarea", "id": "sub", "label": "Sous-titre" },
+    { "type": "collection", "id": "collection", "label": "Collection à afficher" },
+    { "type": "range", "id": "products_limit", "label": "Nombre de produits", "min": 4, "max": 24, "step": 4, "default": 12 }
+  ],
+  "presets": [{ "name": "Produits accueil" }]
+}
+{% endschema %}
