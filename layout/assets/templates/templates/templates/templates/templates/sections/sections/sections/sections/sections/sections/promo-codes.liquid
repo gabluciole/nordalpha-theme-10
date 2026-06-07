@@ -1,0 +1,48 @@
+<div class="na-section bg-dark" id="promos">
+  <div class="na-label">{{ section.settings.label | default: 'Codes promo actifs' }}</div>
+  <h2 class="na-title">{{ section.settings.title | default: 'Économisez sur votre prochain équipement.' }}</h2>
+  <p class="na-sub">{{ section.settings.sub | default: 'Copiez un code et appliquez-le au paiement.' }}</p>
+
+  <div class="na-promo-grid">
+    {% for block in section.blocks %}
+      <div class="na-promo-card" {{ block.shopify_attributes }}>
+        <div class="na-promo-badge">{{ block.settings.badge }}</div>
+        <div class="na-promo-desc">{{ block.settings.description }}</div>
+        <div class="na-promo-code-wrap">
+          <span class="na-promo-code-text">{{ block.settings.code }}</span>
+          <svg class="na-copy-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Codes promo",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label doré", "default": "Codes promo actifs" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Économisez sur votre prochain équipement." },
+    { "type": "text", "id": "sub", "label": "Sous-titre", "default": "Copiez un code et appliquez-le au paiement." }
+  ],
+  "blocks": [
+    {
+      "type": "promo",
+      "name": "Code promo",
+      "settings": [
+        { "type": "text", "id": "badge", "label": "Badge", "default": "Pour les nouveaux campeurs" },
+        { "type": "text", "id": "description", "label": "Description", "default": "10 % sur votre première commande" },
+        { "type": "text", "id": "code", "label": "Code promo", "default": "WILD10" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Codes promo",
+    "blocks": [
+      { "type": "promo", "settings": { "badge": "Pour les nouveaux campeurs", "description": "10 % sur votre première commande", "code": "WILD10" } },
+      { "type": "promo", "settings": { "badge": "Préparez votre prochain bivouac", "description": "25 $ de rabais dès 150 $ d'achat", "code": "BIVOUAC25" } },
+      { "type": "promo", "settings": { "badge": "Sur tout le Canada", "description": "Livraison offerte dès 75 $", "code": "LIVRAISON" } }
+    ]
+  }]
+}
+{% endschema %}
