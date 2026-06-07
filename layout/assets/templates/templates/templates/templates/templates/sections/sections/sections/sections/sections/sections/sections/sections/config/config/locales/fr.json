@@ -1,0 +1,12 @@
+{
+  "general": {
+    "cart": "Panier",
+    "search": "Rechercher",
+    "close": "Fermer"
+  },
+  "products": {
+    "add_to_cart": "Ajouter au panier",
+    "sold_out": "Épuisé",
+    "unavailable": "Indisponible"
+  }
+}
