@@ -1,0 +1,23 @@
+<div class="na-section bg-dark" style="min-height:80vh">
+  <div class="na-label">Collection</div>
+  <h1 class="na-title">{{ collection.title }}</h1>
+  {% if collection.description != blank %}
+    <p class="na-sub">{{ collection.description }}</p>
+  {% endif %}
+
+  <div class="na-products-grid">
+    {% for product in collection.products %}
+      <a href="{{ product.url }}" class="na-product-card">
+        {% if product.featured_image %}
+          <img class="na-product-img" src="{{ product.featured_image | img_url: '500x500', crop: 'center' }}" alt="{{ product.title | escape }}" loading="lazy">
+        {% else %}
+          <div class="na-product-img" style="display:flex;align-items:center;justify-content:center;font-size:3rem">🏕️</div>
+        {% endif %}
+        <div class="na-product-info">
+          <div class="na-product-name">{{ product.title }}</div>
+          <div class="na-product-price">{{ product.price | money }}</div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
