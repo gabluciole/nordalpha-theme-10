@@ -1,0 +1,48 @@
+<div class="na-section bg-dark" style="min-height:80vh">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+
+    <div>
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | img_url: '800x800', crop: 'center' }}" alt="{{ product.title | escape }}" style="width:100%;display:block;border:1px solid rgba(255,255,255,0.08)">
+      {% endif %}
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin-top:0.5rem">
+        {% for image in product.images offset: 1 limit: 4 %}
+          <img src="{{ image | img_url: '200x200', crop: 'center' }}" alt="{{ product.title | escape }}" style="width:100%;display:block;border:1px solid rgba(255,255,255,0.08);cursor:pointer;opacity:0.7">
+        {% endfor %}
+      </div>
+    </div>
+
+    <div>
+      <div class="na-label">{{ product.type }}</div>
+      <h1 class="na-title" style="font-size:1.8rem">{{ product.title }}</h1>
+      <div style="font-size:1.5rem;font-weight:600;color:var(--gold);margin-bottom:1.5rem">
+        {{ product.price | money }}
+      </div>
+      <div style="font-size:0.9rem;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:2rem">
+        {{ product.description }}
+      </div>
+      {% form 'product', product %}
+        {% if product.has_only_default_variant == false %}
+          {% for option in product.options_with_values %}
+            <div style="margin-bottom:1rem">
+              <label style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);display:block;margin-bottom:0.5rem">{{ option.name }}</label>
+              <select name="id" style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:0.7rem 1rem;font-family:'Inter',sans-serif;width:100%;outline:none">
+                {% for variant in product.variants %}
+                  <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+                    {{ variant.title }} — {{ variant.price | money }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endfor %}
+        {% else %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {% endif %}
+        <button type="submit" class="btn-gold" style="width:100%;padding:1rem;font-size:0.85rem" {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %}Ajouter au panier{% else %}Épuisé{% endif %}
+        </button>
+      {% endform %}
+    </div>
+
+  </div>
+</div>
