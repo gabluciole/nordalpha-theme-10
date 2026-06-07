@@ -1,0 +1,101 @@
+<div class="na-hero">
+
+  {% if section.settings.hero_image != blank %}
+    <img class="na-hero-bg" src="{{ section.settings.hero_image | img_url: '1600x' }}" alt="Hero Nordalpha">
+  {% else %}
+    <svg class="na-hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a3a5c"/>
+          <stop offset="25%" stop-color="#2d5a3d"/>
+          <stop offset="52%" stop-color="#7a4020"/>
+          <stop offset="70%" stop-color="#c86a18"/>
+          <stop offset="82%" stop-color="#e8920a"/>
+          <stop offset="100%" stop-color="#f0b030"/>
+        </linearGradient>
+        <radialGradient id="sun" cx="50%" cy="98%" r="55%">
+          <stop offset="0%" stop-color="#ffe066" stop-opacity="1"/>
+          <stop offset="20%" stop-color="#ffaa22" stop-opacity="0.8"/>
+          <stop offset="55%" stop-color="#e06000" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="mtn" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a4a28"/>
+          <stop offset="100%" stop-color="#152412"/>
+        </linearGradient>
+        <linearGradient id="fg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a3015"/>
+          <stop offset="100%" stop-color="#0d1a0c"/>
+        </linearGradient>
+        <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c87820" stop-opacity="0.55"/>
+          <stop offset="60%" stop-color="#1a3015" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#0d1a0c"/>
+        </linearGradient>
+      </defs>
+      <rect width="1440" height="900" fill="url(#sky)"/>
+      <ellipse cx="720" cy="620" rx="800" ry="360" fill="url(#sun)"/>
+      <rect x="320" y="615" width="800" height="8" fill="#ffe066" opacity="0.45" rx="4"/>
+      <ellipse cx="720" cy="617" rx="110" ry="22" fill="#fff4aa" opacity="0.88"/>
+      <polygon points="0,900 0,400 80,520 160,360 240,470 320,300 400,440 480,280 560,420 640,250 720,390 800,250 880,420 960,280 1040,440 1120,300 1200,470 1280,360 1360,520 1440,400 1440,900" fill="url(#mtn)"/>
+      <polygon points="0,900 0,560 60,590 120,555 175,580 230,548 285,572 340,545 395,568 450,548 510,562 570,545 620,558 680,545 720,555 760,545 820,558 880,545 930,562 985,548 1040,568 1095,545 1150,572 1205,548 1260,580 1315,555 1370,590 1440,565 1440,900" fill="url(#fg)"/>
+      <rect x="0" y="560" width="1440" height="340" fill="url(#lake)"/>
+      <rect x="200" y="622" width="360" height="5" fill="#ffe066" opacity="0.28" rx="3"/>
+      <rect x="840" y="622" width="360" height="5" fill="#ffe066" opacity="0.28" rx="3"/>
+      <polygon points="20,900 20,640 55,580 90,640 120,610 150,638 180,608 210,635 230,900" fill="#0d1a0c"/>
+      <polygon points="100,900 100,635 140,570 180,635 215,600 248,635 280,602 310,630 330,900" fill="#111f0e"/>
+      <polygon points="210,900 210,618 260,548 310,618 355,582 392,618 428,580 462,614 488,900" fill="#0d1a0c"/>
+      <polygon points="520,900 520,608 575,535 630,608 672,572 705,608 740,570 772,604 800,900" fill="#0a1509"/>
+      <polygon points="585,900 585,618 640,545 695,618 730,582 758,618 787,580 814,614 840,900" fill="#091308"/>
+      <polygon points="960,900 960,608 1015,535 1070,608 1112,572 1145,608 1180,570 1212,604 1240,900" fill="#0d1a0c"/>
+      <polygon points="1100,900 1100,625 1155,552 1210,625 1252,590 1284,625 1316,588 1348,622 1370,900" fill="#111f0e"/>
+      <polygon points="1240,900 1240,635 1290,565 1340,635 1380,602 1414,635 1440,618 1440,900" fill="#0d1a0c"/>
+      <circle cx="220" cy="140" r="3.5" fill="#fff" opacity="0.7"/>
+      <circle cx="440" cy="90" r="2.8" fill="#fff" opacity="0.6"/>
+      <circle cx="780" cy="65" r="3.2" fill="#fff" opacity="0.65"/>
+      <circle cx="1100" cy="110" r="2.5" fill="#fff" opacity="0.55"/>
+      <circle cx="1270" cy="75" r="3.5" fill="#fff" opacity="0.65"/>
+      <circle cx="130" cy="180" r="2.2" fill="#fff" opacity="0.5"/>
+      <circle cx="960" cy="95" r="2.8" fill="#fff" opacity="0.6"/>
+      <circle cx="610" cy="45" r="2" fill="#fff" opacity="0.45"/>
+      <circle cx="350" cy="55" r="2.5" fill="#fff" opacity="0.5"/>
+      <circle cx="1320" cy="145" r="2.2" fill="#fff" opacity="0.45"/>
+    </svg>
+  {% endif %}
+
+  <div class="na-hero-overlay"></div>
+
+  <div class="na-hero-content">
+    <div class="na-hero-sup">{{ section.settings.hero_sup | default: 'Camp sauvage au coucher du soleil' }}</div>
+    <div class="na-hero-badge">{{ section.settings.hero_badge | default: 'Offre limitée · Livraison gratuite dès 75 $' }}</div>
+    <h1 class="na-hero-title">{{ section.settings.hero_title | default: "L'équipement de ceux qui dorment sous les étoiles." }}</h1>
+    <p class="na-hero-sub">{{ section.settings.hero_sub | default: 'Tente, réchaud, sac de couchage, trousse de survie — sélectionnés par des campeurs, livrés chez vous en 7 à 12 jours.' }}</p>
+    <div class="na-hero-btns">
+      <a href="{{ section.settings.hero_btn1_url | default: routes.collections_url }}" class="btn-gold">
+        {{ section.settings.hero_btn1 | default: "Voir l'équipement" }}
+      </a>
+      <a href="{{ section.settings.hero_btn2_url | default: '#promos' }}" class="btn-outline">
+        {{ section.settings.hero_btn2 | default: 'Obtenir un code promo' }}
+      </a>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Image hero (optionnelle)" },
+    { "type": "text", "id": "hero_sup", "label": "Texte doré au-dessus", "default": "Camp sauvage au coucher du soleil" },
+    { "type": "text", "id": "hero_badge", "label": "Badge", "default": "Offre limitée · Livraison gratuite dès 75 $" },
+    { "type": "text", "id": "hero_title", "label": "Titre principal", "default": "L'équipement de ceux qui dorment sous les étoiles." },
+    { "type": "textarea", "id": "hero_sub", "label": "Sous-titre", "default": "Tente, réchaud, sac de couchage, trousse de survie — sélectionnés par des campeurs, livrés chez vous en 7 à 12 jours." },
+    { "type": "text", "id": "hero_btn1", "label": "Bouton 1 (doré)", "default": "Voir l'équipement" },
+    { "type": "url", "id": "hero_btn1_url", "label": "Lien bouton 1" },
+    { "type": "text", "id": "hero_btn2", "label": "Bouton 2 (contour)", "default": "Obtenir un code promo" },
+    { "type": "url", "id": "hero_btn2_url", "label": "Lien bouton 2" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}
