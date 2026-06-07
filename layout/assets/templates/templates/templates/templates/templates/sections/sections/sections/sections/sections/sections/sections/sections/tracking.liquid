@@ -1,0 +1,27 @@
+<div class="na-section bg-dark">
+  <div class="na-label">{{ section.settings.label | default: 'Suivez votre colis' }}</div>
+  <h2 class="na-title">{{ section.settings.title | default: 'Où est votre équipement ?' }}</h2>
+  <p class="na-sub">{{ section.settings.sub | default: 'Entrez votre numéro de suivi pour connaître l\'emplacement exact de votre équipement en route vers vous.' }}</p>
+
+  <div class="na-track-form">
+    <input class="na-track-input" type="text" id="na-tracking-number" placeholder="{{ section.settings.placeholder | default: 'Ex : 1Z999AA10123456784' }}">
+    <button class="btn-gold na-track-btn">{{ section.settings.btn | default: 'Suivre' }}</button>
+  </div>
+
+  <p class="na-track-note">{{ section.settings.note | default: 'Vous pouvez aussi retrouver vos commandes dans votre compte client.' }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "Suivi de colis",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label doré", "default": "Suivez votre colis" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Où est votre équipement ?" },
+    { "type": "textarea", "id": "sub", "label": "Sous-titre" },
+    { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "Ex : 1Z999AA10123456784" },
+    { "type": "text", "id": "btn", "label": "Texte bouton", "default": "Suivre" },
+    { "type": "text", "id": "note", "label": "Note de bas" }
+  ],
+  "presets": [{ "name": "Suivi de colis" }]
+}
+{% endschema %}
